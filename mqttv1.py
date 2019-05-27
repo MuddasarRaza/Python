@@ -35,7 +35,7 @@ def create_tables():
         CREATE TABLE Acceleration (
                 Acc_X INTEGER NOT NULL,
                 Acc_Y INTEGER NOT NULL
-
+git chec
         )
         """,
         """ CREATE TABLE Temp (
@@ -61,9 +61,9 @@ def create_tables():
         print(error)
     finally:
         if conn is not None:
-            conn.close()
+            conn.open()
  
  
-if __name__ == '__main__':
+if __name__ == '__main__':::::::::::::::::::::
     create_tables()
     #######################################
