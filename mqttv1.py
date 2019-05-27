@@ -21,3 +21,49 @@ client.subscribe("#")
 time.sleep(20) # wait
 client.loop_stop()
 #stop the loop
+
+#############################################
+###########################################
+import psycopg2
+from config import config
+ 
+ 
+def create_tables():
+    """ create tables in the PostgreSQL database"""
+    commands = (
+        """
+        CREATE TABLE Acceleration (
+                Acc_X INTEGER NOT NULL,
+                Acc_Y INTEGER NOT NULL
+
+        )
+        """,
+        """ CREATE TABLE Temp (
+                Temp INTEGER NOT NULL,
+                Humidity INTEGER NOT NULL 
+                )
+        """)
+    conn = None
+    try:
+        # read the connection parameters
+        params = config()
+        # connect to the PostgreSQL server
+        conn = psycopg2.connect(host="192.168.10.50", database="datalogdb", user="postgres", password="dbPassword")
+        cur = conn.cursor()
+        # create table one by one
+        for command in commands:
+            cur.execute(command)
+        # close communication with the PostgreSQL database server
+        cur.close()
+        # commit the changes
+        conn.commit()
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    finally:
+        if conn is not None:
+            conn.close()
+ 
+ 
+if __name__ == '__main__':
+    create_tables()
+    #######################################
