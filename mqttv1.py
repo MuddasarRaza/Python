@@ -20,4 +20,4 @@ print("Subscribing to topic","house/bulbs/bulb1")
 client.subscribe("#")
 time.sleep(20) # wait
 client.loop_stop()
-client.loop_start()#stop the loop
+#stop the loop
