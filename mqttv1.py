@@ -141,3 +141,11 @@ client.subscribe("#")
 #time.sleep(800)# If you want to wait
 client.loop_forever()
 
+
+    ##    #client.connect(broker_address)
+##    client.loop_start() #start the loop
+##    print "loop started"
+##    print("Subscribing to Sensordata")
+##    client.subscribe("#")
+##    print "subscribed"
+
