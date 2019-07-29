@@ -141,3 +141,17 @@ client.subscribe("#")
 #time.sleep(800)# If you want to wait
 client.loop_forever()
 
+broker_address="192.168.10.150"
+print("creating new instance")
+client = mqtt.Client("P1") #create new instance
+client.on_message=on_message
+client.on_disconnect = on_disconnect
+#client.on_connect = on_connect
+print("connecting to broker")
+client.connect(broker_address) #connect to broker
+#client.loop_start() #start the loop
+print("Subscribing to Sensordata")
+client.subscribe("#")
+#time.sleep(800)# If you want to wait
+client.loop_forever()
+
